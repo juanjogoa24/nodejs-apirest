@@ -4,17 +4,11 @@ const _ = require('underscore');
 const Usuario = require('../models/usuario');
 
 const { verificaToken, verificaRole } = require('../middlewares/autenticacion');
-const usuario = require('../models/usuario');
+//const usuario = require('../models/usuario');
 
 const app = express();
 
 app.get('/usuario', verificaToken, (req, res) => {
-
-    // return res.json({
-    //     usuario: req.usuario,
-    //     nombre: req.usuario.nombre,
-    //     email: req.usuario.email
-    // })
 
     let desde = Number(req.query.desde) || 0;
     let limite = Number(req.query.limite) || 0;
@@ -148,5 +142,6 @@ app.delete('/usuario2/:id', verificaToken, (req, res) => {
             });
         })
 });
+
 
 module.exports = app;
